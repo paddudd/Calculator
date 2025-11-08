@@ -10,7 +10,7 @@ public class Main {
             System.out.print("Do you want to continue? [Y]/[N]");
             String answer = input.nextLine();
             if (!answer.equalsIgnoreCase("Y")) {            //! means inverse
-                System.out.println("bye bitch");
+                System.out.println("Byebye");
                 loop = false;
             }
         }
