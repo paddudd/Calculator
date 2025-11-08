@@ -31,7 +31,7 @@ public class Main {
         int value = input.nextInt();
 
         if (value > 4 || value < 1) {
-            System.out.println("FUCK OFF CUNT!!!!");
+            System.out.println("Invalid input");
         } else {
 
             System.out.print("Enter the first number for your calculation: ");
