@@ -3,7 +3,19 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        start();
+        boolean loop = true;
+        Scanner input = new Scanner(System.in);
+        while (loop){                                                   //loop == true same as just loop
+            start();
+            System.out.print("Do you want to continue? [Y]/[N]");
+            String answer = input.nextLine();
+            if (!answer.equalsIgnoreCase("Y")) {            //! means inverse
+                System.out.println("bye bitch");
+                loop = false;
+            }
+        }
+
+
     }
 
     public static void start() {
@@ -20,8 +32,7 @@ public class Main {
 
         if (value > 4 || value < 1) {
             System.out.println("FUCK OFF CUNT!!!!");
-        }
-        else {
+        } else {
 
             System.out.print("Enter the first number for your calculation: ");
             double x = input.nextDouble();
