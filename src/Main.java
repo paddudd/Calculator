@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         boolean loop = true;
         Scanner input = new Scanner(System.in);
-        while (loop){                                                   //loop == true same as just loop
+        while (loop) {                                                   //loop == true | same as just loop
             start();
             System.out.print("Do you want to continue? [Y]/[N]");
             String answer = input.nextLine();
@@ -47,7 +47,10 @@ public class Main {
                 System.out.println("The product is: " + multiplication(x, y));
             } else System.out.println("The quotient is: " + division(x, y));
 
+            System.out.println("Current amount of calculations this session: " + count);
+            count++;
         }
+
     }
 
     public static double addition(double x, double y) {
@@ -65,6 +68,8 @@ public class Main {
     public static double division(double x, double y) {
         return x / y;
     }
+
+    public static int count = 1;
 }
 
 
