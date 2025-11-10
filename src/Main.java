@@ -47,8 +47,8 @@ public class Main {
                 System.out.println("The product is: " + multiplication(x, y));
             } else System.out.println("The quotient is: " + division(x, y));
 
-            System.out.println("Current amount of calculations this session: " + count);
             count++;
+            System.out.println("Current amount of calculations this session: " + count);
         }
 
     }
@@ -69,7 +69,7 @@ public class Main {
         return x / y;
     }
 
-    public static int count = 1;
+    public static int count;
 }
 
 
