@@ -26,11 +26,12 @@ public class Main {
         System.out.println("[2] Subtraction");
         System.out.println("[3] Multiplication");
         System.out.println("[4] Division");
+        System.out.println("[5] Modulus");
 
         System.out.print("Enter selected calculation: ");
         int value = input.nextInt();
 
-        if (value > 4 || value < 1) {
+        if (value > 5 || value < 1) {
             System.out.println("Invalid input");
         } else {
 
@@ -45,7 +46,10 @@ public class Main {
                 System.out.println("The difference is: " + subtraction(x, y));
             } else if (value == 3) {
                 System.out.println("The product is: " + multiplication(x, y));
-            } else System.out.println("The quotient is: " + division(x, y));
+            } else if (value == 4) {
+                System.out.println("The quotient is: " + division(x, y));
+
+            } else System.out.println("The remainder of the division is: " + modulus(x, y));
 
             count++;
             System.out.println("Current amount of calculations this session: " + count);
@@ -67,6 +71,10 @@ public class Main {
 
     public static double division(double x, double y) {
         return x / y;
+    }
+
+    public static double modulus(double x, double y) {
+        return x % y;
     }
 
     public static int count;
