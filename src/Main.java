@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static double memory;
+    public static int count;
+
     public static void main(String[] args) {
         boolean loop = true;
         Scanner input = new Scanner(System.in);
@@ -54,9 +57,10 @@ public class Main {
                 System.out.println("The quotient is: " + division(x, y));
                 memory = division(x, y);
 
-            } else System.out.println("The remainder of the division is: " + modulus(x, y));
-            memory = modulus(x, y);
-
+            } else {
+                System.out.println("The remainder of the division is: " + modulus(x, y));
+                memory = modulus(x, y);
+            }
             count++;
             System.out.println("Current amount of calculations this session: " + count);
         }
@@ -129,8 +133,6 @@ public class Main {
         return x % y;
     }
 
-    public static double memory;
-
     public static double additionMemory(double z, double memory) {
         return memory + z;
     }
@@ -150,7 +152,5 @@ public class Main {
     public static double modulusMemory(double z, double memory) {
         return memory % z;
     }
-
-    public static int count;
 }
 
