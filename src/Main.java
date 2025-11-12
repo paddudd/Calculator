@@ -14,8 +14,8 @@ public class Main {
             if (count == 0 || newLoop) {
                 start();
                 newLoop = false;
-                
-            } else if (count > 0) {
+
+            } else {
                 System.out.print("Do you wish to perform another calculation on " + memory + "? [Y]/[N]");
                 String answerContinue = input.nextLine();
                 if (answerContinue.equalsIgnoreCase("Y")) {
