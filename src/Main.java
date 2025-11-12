@@ -7,18 +7,33 @@ public class Main {
 
     public static void main(String[] args) {
         boolean loop = true;
+        boolean newLoop = false;
         Scanner input = new Scanner(System.in);
-        start();
-        while (loop) {                                                   //loop == true | same as just loop
-            anotherCalc();
-            System.out.print("Do you want to continue calculating? [Y]/[N]");
-            String answer = input.nextLine();
-            if (!answer.equalsIgnoreCase("Y")) {            //! means inverse
-                System.out.println("Byebye");
-                loop = false;
+
+        while (loop) {
+            if (count == 0 || newLoop) {
+                start();
+                newLoop = false;
+                
+            } else if (count > 0) {
+                System.out.print("Do you wish to perform another calculation on " + memory + "? [Y]/[N]");
+                String answerContinue = input.nextLine();
+                if (answerContinue.equalsIgnoreCase("Y")) {
+                    anotherCalc();
+
+                } else {
+                    System.out.print("Do you wish to continue calculating? [Y]/[N]");
+                    String answer = input.nextLine();
+                    if (!answer.equalsIgnoreCase("Y")) {
+                        System.out.println("Byebye");
+                        loop = false;
+
+                    } else {
+                        newLoop = true;
+                    }
+                }
             }
         }
-
 
     }
 
@@ -69,56 +84,51 @@ public class Main {
     public static void anotherCalc() {
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Do you wish to perform another calculation on " + memory + "? [Y]/[N]");
-        String answer = input.nextLine();
+        System.out.println("Select a calculation type:");
+        System.out.println("[1] Addition");
+        System.out.println("[2] Subtraction");
+        System.out.println("[3] Multiplication");
+        System.out.println("[4] Division");
+        System.out.println("[5] Modulus");
 
-        if (answer.equalsIgnoreCase("Y")) {
-            System.out.println("Select a calculation type:");
-            System.out.println("[1] Addition");
-            System.out.println("[2] Subtraction");
-            System.out.println("[3] Multiplication");
-            System.out.println("[4] Division");
-            System.out.println("[5] Modulus");
+        System.out.print("Enter selected calculation: ");
+        int value = input.nextInt();
 
-            System.out.print("Enter selected calculation: ");
-            int value = input.nextInt();
+        if (value > 5 || value < 1) {
+            System.out.println("Invalid input");
+        } else {
 
-            if (value > 5 || value < 1) {
-                System.out.println("Invalid input");
+            System.out.print("Enter the number you wish to calculate with on " + memory + ": ");
+            double z = input.nextDouble();
+
+            if (value == 1) {
+                double temp = memory;
+                memory = addition(z, temp);
+                System.out.println("The sum is: " + memory);
+
+            } else if (value == 2) {
+                double temp = memory;
+                memory = subtraction(temp, z);
+                System.out.println("The difference is: " + memory);
+
+            } else if (value == 3) {
+                double temp = memory;
+                memory = multiplication(z, temp);
+                System.out.println("The product is: " + memory);
+
+            } else if (value == 4) {
+                double temp = memory;
+                memory = division(temp, z);
+                System.out.println("The quotient is: " + memory);
+
             } else {
-
-                System.out.print("Enter the number you wish to calculate with on " + memory + ": ");
-                double z = input.nextDouble();
-
-                if (value == 1) {
-                    double temp = memory;
-                    memory = addition(z, temp);
-                    System.out.println("The sum is: " + memory);
-
-                } else if (value == 2) {
-                    double temp = memory;
-                    memory = subtraction(temp, z);
-                    System.out.println("The difference is: " + memory);
-
-                } else if (value == 3) {
-                    double temp = memory;
-                    memory = multiplication(z, temp);
-                    System.out.println("The product is: " + memory);
-
-                } else if (value == 4) {
-                    double temp = memory;
-                    memory = division(z, temp);
-                    System.out.println("The quotient is: " + memory);
-
-                } else {
-                    double temp = memory;
-                    memory = modulus(z, temp);
-                    System.out.println("The remainder of the division is: " + memory);
-                }
-
-                count++;
-                System.out.println("Current amount of calculations this session: " + count);
+                double temp = memory;
+                memory = modulus(z, temp);
+                System.out.println("The remainder of the division is: " + memory);
             }
+
+            count++;
+            System.out.println("Current amount of calculations this session: " + count);
         }
     }
 
@@ -143,4 +153,3 @@ public class Main {
         return x % y;
     }
 }
-
